@@ -22,7 +22,9 @@ class ProductsController < ApplicationController
 	end
 
 	def create
-		binding.pry
+		@product = Product.new(image: params[:product][:image], product_name: params[:product][:product_name])
+	  @product.save
+	  redirect_to products_path
 		
 	end
 

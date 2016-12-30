@@ -22,6 +22,7 @@
 <%- @products.each do |product| %>
   <%= product.product_name %><br>
   <%= product.price %>
+  <a href="<%= product.image%>">Download</a>
 
   </br>
 <% end %>
