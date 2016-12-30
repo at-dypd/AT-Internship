@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<%= form_for @product do |f| %>
+
+  <p>
+    <%= f.label :product_name %><br />
+    <%= f.text_field :product_name %>
+  </p>
+  <p>
+    <%= f.file_field :image %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+</body>
+</html>

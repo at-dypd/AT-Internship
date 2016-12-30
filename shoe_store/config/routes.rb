@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
+  resources :products, concerns: :paginatable
   root 'application#hello'
 
   # The priority is based upon order of creation: first created -> highest priority.
