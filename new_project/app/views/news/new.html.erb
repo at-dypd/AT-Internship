@@ -1,6 +1,0 @@
-<h2>Create new</h2>
-<%=form_for :news, url(action: "index") do |f|%>
-	Name: <%=f.text_field :name%>
-	Content: <%=f.text_field :content%>
-	<%=f.submit "Submit"%>
-<%end%>
