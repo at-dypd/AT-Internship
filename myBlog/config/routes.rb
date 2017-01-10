@@ -5,7 +5,16 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'users#index'
+  resources :posts do
 
+
+  end
+
+  resources :users do
+      resources :posts do
+        resources :comments
+      end
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -54,10 +63,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resource :user, only: [:edit, :update]
-   resources :users do
-      resources :posts do
-        resources :comments
-    end
-  end
+
 end
