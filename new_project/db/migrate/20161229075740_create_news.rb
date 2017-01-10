@@ -7,5 +7,6 @@ class CreateNews < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    add_foreign_key :news, :users, column: :user_id, primary_key: :id
   end
 end

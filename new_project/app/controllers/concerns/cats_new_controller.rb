@@ -1,0 +1,2 @@
+class CatsNewController <ApplicationController
+end
