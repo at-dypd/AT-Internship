@@ -5,9 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" type="text/css" href="/home/xing/Desktop/TestRuby/AT-Internship/shoe_store/app/assets/stylesheets/style.css">
-  <script src="/home/xing/Desktop/AT-Internship/shoe_store/app/assets/javascripts/style.js"></script>
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
 </head>
 <body>
 <header>
@@ -23,10 +22,18 @@
 	<% if user_signed_in? %>
 		<div>
 		  <ul>
-		  	<li><%= link_to "#{current_user.email}", edit_user_registration_path%></li>
-		  	<li><%= link_to "New"%></li>
-		  	<li><%= link_to "Hot"%></li>
-		    <li><%= link_to "Logout", destroy_user_session_path, method: :delete  %></li>
+		  	<li class="dropdown">
+			    <a href="javascript:void(0)" class="dropbtn" onclick="DropdownMenu()"><%=current_user.email%></a>
+			    <div class="dropdown-content" id="myDropdown">
+			      <%= link_to "Profile", user_path(current_user.id)%>
+			      <%= link_to "Update", edit_user_path(current_user.id)%>
+			      <%= link_to "Reset pass", edit_user_registration_path%>
+			    </div>
+			  </li>
+		  	<li><%= link_to "New", products_path(navigation: "new")%></li>
+		  	<li><%= link_to "Hot", products_path(navigation: "hot")%></li>
+		  	<li><%= link_to "Create post", new_product_path %></li>
+		    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
 		    <li><%= link_to "Home", products_path %></li>
 		  </ul>
 		</div>
@@ -49,11 +56,18 @@
 	<% end %>
 </header>
 <main>
-	
+	<nav class="w3-sidenav w3-white w3-card-2" style="width:18%; height: 400px;"><br>
+	  <%@cate_sidebar.each do |cate|%>
+      <p><%= link_to "#{cate.content}", category_path(id: cate.id)%></p>
+    <%end%>
+	</nav>
+	<div style="margin-left: 20%">
+		<%= yield %>
+	</div>
 </main>
-<center><%= yield %></center>
+
 <br><br>
-<footer class="w3-container w3-teal">
+<footer style="width: 100%;position:fixed!important; bottom: 10px; z-index: -1" class="w3-container w3-teal">
   <p>Author by Thachnp</p>
 </footer>
 </body>

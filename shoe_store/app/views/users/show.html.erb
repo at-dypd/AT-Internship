@@ -1,4 +1,30 @@
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="avatar-image" style="width: 200px; height: 200px">
+	<img src="<%= @user.avatar%>">
+</div>
+<div id="info">
+ 	<fieldset>
+    <legend>Information:</legend>
+    	<label >Name :</label> <%=@user.user_name %><br>
+        <label >Position :</label> Intern <br>
+        <label >Team :</label> Ruby <br>
+   </fieldset>
+</div>
+
+<div id="contact">
+	<fieldset>
+  	<legend>Contact:</legend>
+      <label >Phone :</label> <%=@user.telephone %> <br>
+      <label type="email">Email :</label> nguyenphuocthach12t4@gmail.com <br>
+      <label >Address :</label> Da Nang <br>
+      <br>
+  </fieldset>
+</div>
+
+<div id="products">
+  <fieldset>
+    <legend>Product:</legend>
+      <%= render @user.products %>
+  </fieldset>
+</div>
+

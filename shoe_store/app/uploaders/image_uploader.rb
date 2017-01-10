@@ -1,4 +1,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
+  def default_url(*args)
+    "https://cdn3.iconfinder.com/data/icons/basketball-icons/484/Winged_Shoe-512.png"
+  end
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
