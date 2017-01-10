@@ -1,0 +1,57 @@
+<h2 class="list_news">Show</h2>
+<section class="col-md-2"></section>
+	<section class="col-md-8">
+		<div class="panel panel-primary">
+			<div class="panel-heading name-new"><%=@new.name%></div>
+			<section class="panel-body">
+				<!-- <img src="cinqueterre.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236">  -->
+				<%=image_tag  "#{@new.picture}"%>
+				<section class="description"><%=@new.description%></section>
+				<section class="content"><%=@new.content%></section>
+				<section class="actions">
+					<%=form_for :like, url: new_like_index_path(@new.id) do |f|%>
+						<%=f.hidden_field current_user.id%>
+						<%=f.submit "Like", class: "btn btn-primary btn-sm"%> <%=@new.like_count%>
+					<%end%>
+					<label></label>
+				</section>
+				<section class="comment">
+					<p class="comment-section">Comments:</p>
+					<form>
+						<%@comments.each do |comment|%>
+							<section class="comment-main">
+								<label class="comment-user">User <%=comment.user_id%>:</label>
+								<label class="comment-content"><%=comment.content%></label>
+								<%if current_user.id == comment.user_id %>
+									<%=link_to "Del", new_like_index_path(@new.id), method: :delete%>
+								<%end%>
+							</section>
+							<%comment.reply.each do |reply|%>
+								<section class="reply-main">
+									<label class="reply-user">User <%=reply.user_id%>:</label>
+									<label class="reply-content"><%=reply.content%></label>
+								</section>
+							<%end%>
+							<section class="reply-form">
+								<!-- <input type="text" name="reply"  class="form-control reply-main reply-input">
+								<input type="hidden" name="comment_id" value="<%=comment.id%>">
+								<input type="submit" name="submit" value="reply" class="btn btn-success comment reply-main"> -->
+								<%=form_for :comment, url: new_comment_index_path(@new.id)  do |f|%>
+										<%=f.text_field :content, class: "form-control reply-main reply-input"%>
+										<%=f.hidden_field :comment_id%>
+										<%=f.submit "Reply", class: "btn btn-success comment reply-main"%>
+								<%end%>
+							</section>
+							
+						<%end%>
+					</form>
+					
+					
+				</section>
+				<%=form_for :comment, url: new_comment_index_path(@new.id) do |f|%>
+				<%flash[:new_id] = @new.id%>
+					<%=f.text_field :content, class: "form-control comment comment-input"%>
+					<%=f.submit "Comment", class: "btn btn-success comment"%>
+				<%end%>
+			</section>
+		</div>		

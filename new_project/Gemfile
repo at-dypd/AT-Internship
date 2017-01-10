@@ -3,6 +3,10 @@ source 'https://rubygems.org'
 gem 'bootstrap-sass'
 gem 'pry'
 gem 'devise'
+gem 'kaminari'
+gem 'ransack'     
+gem 'bootstrap-kaminari-views'
+gem "carrierwave"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
