@@ -1,0 +1,31 @@
+<h2 class="list_news">List news</h2>
+<div class="col-md-1"></div>
+<%=button_to "Create new", new_news_path, method: :get, class: "btn btn-success create-new"%>
+<section class="content">
+	<!-- <section class="col-md-1"></section> -->
+	<%@news.each do |item|%>
+	<section class="col-md-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<%=item.name%>
+			</div>
+			<div class="panel-body">
+				<%=item.description%>
+			</div>
+			<div class="function">
+				<%=link_to "Show", new_path(item.id), method: :get%>
+				<%=link_to "Edit", edit_new_path(item.id), method: :get%>
+				<%=link_to "Del", new_path(item.id), method: :delete%>
+
+			</div>
+		</div>
+	</section>
+	<section class="col-md-1">
+		
+	</section>
+	<section>
+		
+	</section>
+	
+	<%end%>
+</section>

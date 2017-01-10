@@ -1,3 +1,70 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*@font-face {
+    font-family: sao;
+    src: url('sao.otf');
+}*/
+*{
+	margin:0;
+	padding:0;
+}
+
+.container{
+	margin: 0 auto;
+	width: 900px;
+	max-width: 900px;
+}
+.logged_in{
+	width: 100%;
+	text-align: right;
+	clear: both;
+	line-height: 50px;
+}
+.sidebar{
+	display: block;
+	width: 200px;
+}
+.banner{
+	height: 250px;
+	box-sizing: border-box;
+	background:url(banner.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	clear: both;
+}
+.sb{
+	display: inline-block;
+	float: left;
+	height: 500px;
+	width: 100%;
+	list-style-type: none;
+
+}	
+.sb_item{
+	display: block;
+}
+.sb_item a{
+	box-sizing: border-box;
+	font-size: 18;
+	display: block;
+	width: 100%;
+	line-height: 30px;
+	text-decoration: none;
+	padding-left: 20px;
+	border-bottom: solid 1px;
+}
+.sb_item:last-child a{
+	border-bottom:none;
+}
+
+#main_content{
+	display: block;
+	margin-left: 300px;
+}
+
+.content::after{
+	display: table;
+	content: "";
+	clear: both;
+}
