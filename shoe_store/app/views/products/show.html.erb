@@ -1,0 +1,66 @@
+<h2>product info</h2>
+<button class="button button3"><%= link_to "Like", {controller: "likes", action: "create", id: @product.id, user_id: current_user.id}, method: :post %></button>  <%=Like.where(product_id: @product.id).size%> person liked this product<br><br>
+<div id="product-info">
+  <fieldset>
+    <legend>Product:</legend>
+    <div style="width: 200px; height: 200px">
+      <img src="<%= @product.image%>">
+    </div>
+    <p>
+      <strong>Product name:</strong>
+      <%= @product.product_name %>
+    </p>
+    <p>
+      <strong>Price:</strong>
+      <%= @product.price %>
+    </p>
+    <p>
+      <strong>type:</strong>
+      <% @product.categories.each do |f| %>
+        <%= f.content%>
+      <%end%>
+    </p>
+    <p>
+      <strong>Description:</strong>
+      <%= @product.description %>
+    </p>
+  </div>
+  </fieldset>
+
+<div id="comment">
+ <fieldset>
+    <legend>Comment:</legend>
+      <%@product.comments.each do |f|%>
+        <%if f.comment_id.nil?%>
+          <p>
+          <strong><%= f.user.user_name%> :</strong> 
+          <%= f.content%>
+          <button id="reply<%=f.id%>" class="reply-btn">Reply</button>
+          </p>
+          <%f.replies.each do |g|%>
+          <p>
+          <strong>-- <%= g.user.user_name%> :</strong>          
+          <%=g.content%>
+          </p>
+        <% end%>
+        <%= render partial: "comments/reply", locals: {comment_id: f.id, product_id: @product.id} %>
+      <%end%>
+      <%end%>
+  </fieldset>
+</div>
+<%= render 'comments/form' %>
+<button class="button button3"><%= link_to "Delete Product", product_path,  method: :delete %></button><br><br>
+
+<!-- script button -->
+<script>
+  var yo = document.getElementsByClassName('reply-btn')
+  console.log(yo);
+  var lo = [].slice.call(yo)
+  lo.forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.target.style.display = 'none';
+      e.target.parentElement.nextElementSibling.style.display = 'block';
+    });
+  });
+</script>

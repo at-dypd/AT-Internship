@@ -11,7 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161229022412) do
+ActiveRecord::Schema.define(version: 20170109023243) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "content"
+  end
+
+  create_table "categories_products", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "product_id"
+  end
+
+  add_index "categories_products", ["category_id"], name: "index_categories_products_on_category_id"
+  add_index "categories_products", ["product_id"], name: "index_categories_products_on_product_id"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comment_id"
+  end
+
+  add_index "comments", ["product_id"], name: "index_comments_on_product_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "product_id"
+  end
+
+  add_index "likes", ["product_id"], name: "index_likes_on_product_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
+  create_table "products", force: :cascade do |t|
+    t.string   "product_name"
+    t.integer  "price"
+    t.string   "image"
+    t.string   "type"
+    t.integer  "user_id"
+    t.string   "description"
+    t.integer  "views_count"
+    t.integer  "likes_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -24,8 +69,12 @@ ActiveRecord::Schema.define(version: 20161229022412) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user_name"
+    t.string   "telephone"
+    t.string   "role"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
