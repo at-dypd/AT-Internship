@@ -19,6 +19,9 @@ gem 'kaminari'
 gem 'cancancan'
 gem 'devise'
 gem 'carrierwave'
+gem 'bootstrap-kaminari-views'
+gem 'bootstrap'
+gem 'config'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
