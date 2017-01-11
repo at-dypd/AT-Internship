@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20170104020622) do
 
+
   create_table "comments", force: :cascade do |t|
     t.string   "content"
     t.string   "post_id"
