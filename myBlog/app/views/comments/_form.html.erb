@@ -1,11 +1,7 @@
-<% binding.pry %>
-<%= form_for([current_user, @post, @comment] , action: :create, html: {multipart: true}) do |f| %>
-  <p>
-    <%= f.hidden_field :id, :value => @comment.id %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+
+
+<form action="/users/<%= current_user.id%>/posts/<%= @post.id %>/comments" method="post">
+  <label>comment</label>
+  <textarea name="content"></textarea>
+  <input type="submit" name="submit" value="Comment">
+</form>

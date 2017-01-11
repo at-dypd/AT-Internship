@@ -7,8 +7,24 @@
   <%= @post.containt %>
 </p>
 
-<h2>Comments</h2>
-<%= render @post.comments%>
+<p>
+  <% @post.comments.where(comment_id: nil).each do |comment| %>
+    <strong>Comment:</strong>
+    <%= comment.content %><br>
+    <form action="/users/<%= current_user.id%>/posts/<%= @post.id %>/comments" method="post">
+      <label>Reply</label><br>
+      <textarea name="content">
+      </textarea>
+      <input type="hidden" name="comment_id" value="<%= comment.id %>">
+      <input type="submit" name="submit" value="Reply" class="btn btn-success">
+    </form>
+    <br>
+    <% comment.replies.each do |reply| %>
+    <%= reply.content %><br>
+    <%end%>
+    <br><br>
+  <%end%>
+</p>
 
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>

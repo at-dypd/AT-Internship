@@ -4,19 +4,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-    binding.pry
     @post = Post.find_by(params[:post_id])
-    if params[:comment_id] == ""
-      @comment = @post.replies.create(comment_params)
-      redirect_to user_post_path(current_user.id, @post.id)
+    if params[:submit] == "Comment"
+    @post.comments.create(content: params[:content], user_id: current_user.id)
     else
-      @comment = @post.comments.create(comment_params)
-      redirect_to user_post_path(current_user.id, @post.id)
+      @comment = Comment.find_by(id: params[:comment_id])
+      @comment.replies.create(content: params[:content], user_id: current_user.id, post_id: @post.id)
     end
-
+    redirect_to user_post_path(user_id: current_user.id, id: @post.id)
   end
 
   def destroy
+
   end
 
   private

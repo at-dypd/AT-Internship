@@ -1,5 +1,4 @@
 class Comment < ActiveRecord::Base
-  belongs_to :post
-  belongs_to :comment, class_name: "Comment" #-> requires "parent_id" column
-  has_many :replies, class_name: "Comment", foreign_key: :comment_id, dependent: :destroy
+  belongs_to :post, foreign_key: :post_id, dependent: :destroy
+  has_many :replies, class_name:"Comment", foreign_key: :comment_id
 end
