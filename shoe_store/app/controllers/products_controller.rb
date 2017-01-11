@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
-
 	def index
-		binding.pry
 		if params[:navigation].nil?
 	    @search = Product.all.ransack(params[:q])
 	    @products = @search.result.page(params[:page]).per(params[:limit])
