@@ -18,7 +18,7 @@ class NewController < ApplicationController
 	end	
 
 	def create
-		binding.pry
+		# binding.pry
 		@new = New.new(name: params[:new][:name], description: params[:new][:description], content: params[:new][:content], user_id: current_user.id, vote: 0, picture: params[:new][:picture].original_filename)
 		@new.save
 		params[:new][:category].each do |cat|

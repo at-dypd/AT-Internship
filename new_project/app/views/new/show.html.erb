@@ -23,7 +23,7 @@
 								<label class="comment-user">User <%=comment.user_id%>:</label>
 								<label class="comment-content"><%=comment.content%></label>
 								<%if current_user.id == comment.user_id %>
-									<%=link_to "Del", new_like_index_path(@new.id), method: :delete%>
+									<%=link_to "Del", new_comment_path(new_id: @new.id, id: comment.id), method: :delete%>
 								<%end%>
 							</section>
 							<%comment.reply.each do |reply|%>
