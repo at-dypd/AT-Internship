@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root 'application#hello'
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :users
+  resources :categories
+  concern :paginatable do
+    get '(page/:page)', action: :index, on: :collection, as: ''
+  end
+
+
+  post   '/products/:id',   to: 'likes#create'
+
+  resources :products, concerns: :paginatable do
+    resources :comments
+  end
+  root 'products#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
