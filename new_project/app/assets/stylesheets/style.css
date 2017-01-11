@@ -70,5 +70,50 @@ h2 {
 
 .function {
     text-align: center;
+} 
+
+.description {
+    font-style: italic;
+}
+
+.name-new {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.comment {
+    margin-top: 20px;
+}
+
+.comment-main {
+    margin-left: 20px;
+}
+
+.comment-section {
+    color: #0066ff;
+}
+
+.comment-user {
+    color: #008080;
+}
+
+.reply-main {
+    margin-left: 40px;
+}
+
+.reply-input {
+    width: 200px;
+}
+
+.comment-input {
+    width: 400px;
+}
+
+.reply-form {
+    display: inline;
+}
+
+.actions {
+    margin-top: 10px;
 }
 
