@@ -1,0 +1,32 @@
+	<h2 class="list_news">Edit new</h2>
+
+	<section class="col-md-2"></section>
+	<section class="col-md-8">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Edit new</div>
+			<section class="panel-body">
+				<%=form_for @new, url: {action: "update"} do |f|%>
+					<section class="field">
+						<%=f.label "Name: "%>
+						<%=f.text_field :name, class: "form-control"%>
+					</section>
+					<section class="field">
+						<%=f.label "Description"%>
+						<%=f.text_field :description, class: "form-control"%>
+					</section>
+					<section class="field">
+						<%=f.label "Content"%>
+						<%=f.text_field :content, class: "form-control"%>
+					</section>
+					<%binding.pry%>
+					<section class="field">
+						<%=f.label "Category: "%>
+						<%=f.select "category", @cats.collect{|cat| [cat.name, cat.id] }, {}, multiple: :multiple, size: 5, class: "form-control"%>
+					</section>
+					<section class="actions">
+						<%=f.submit "Submit"%>
+					</section>
+				<%end%>
+			</section>
+		</div>		
+	</section>

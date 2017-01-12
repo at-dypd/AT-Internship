@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'pry'
 gem 'bootstrap-sass', '~> 3.3.6'
+
 gem 'cancancan' 
 
 group :development, :test do

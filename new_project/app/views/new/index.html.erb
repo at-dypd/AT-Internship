@@ -1,8 +1,10 @@
 <h2 class="list_news">List news</h2>
 <div class="col-md-1"></div>
-<%=button_to "Create new", new_news_path, method: :get, class: "btn btn-success create-new"%>
+<%=button_to "Create new", new_new_path, method: :get, class: "btn btn-success create-new"%>
+
 <section class="content">
 	<!-- <section class="col-md-1"></section> -->
+	
 	<%@news.each do |item|%>
 	<section class="col-md-3">
 		<div class="panel panel-primary">
@@ -23,9 +25,11 @@
 	<section class="col-md-1">
 		
 	</section>
-	<section>
-		
-	</section>
+	
 	
 	<%end%>
+	<section>
+		<%= paginate(@news)%>
+	</section>
+	
 </section>

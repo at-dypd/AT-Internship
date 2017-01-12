@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
 
+
   # load_and_authorize_resource StaticPagesController
 
   def home

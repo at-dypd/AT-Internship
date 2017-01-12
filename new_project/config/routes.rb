@@ -54,5 +54,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :new
+  Rails.application.routes.draw do
+    resources :new do 
+      resources :comment
+      resources :like
+    end
+  end
+
 end
