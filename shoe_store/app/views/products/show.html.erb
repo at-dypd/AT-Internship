@@ -1,5 +1,6 @@
 <h2>product info</h2>
 <button class="button button3"><%= link_to "Like", {controller: "likes", action: "create", id: @product.id, user_id: current_user.id}, method: :post %></button>  <%=Like.where(product_id: @product.id).size%> person liked this product<br><br>
+<%= link_to "Cho vao gio",{controller: "cookies", action: "create", product_id: @product.id, product_price: @product.price}, method: :post %>
 <div id="product-info">
   <fieldset>
     <legend>Product:</legend>
@@ -26,7 +27,6 @@
     </p>
   </div>
   </fieldset>
-
 <div id="comment">
  <fieldset>
     <legend>Comment:</legend>
@@ -60,7 +60,7 @@
     el.addEventListener('click', function (e) {
       e.preventDefault();
       e.target.style.display = 'none';
-      e.target.parentElement.nextElementSibling.style.display = 'block';
+      console.log(e.target.parentElement.nextElementSibling.style.display = 'block');
     });
   });
 </script>

@@ -16,7 +16,7 @@
     <%= f.label :price %><br />
     <%= f.text_field :price %>
   </p>
-  <%=f.select "categories", @cats.collect{|cat| [cat.content, cat.id] }, {}, multiple: :true, size: 5, include_blank: true, class: "form-control"%>
+  <%=f.select "categories", @cate_sidebar.collect{|cat| [cat.content, cat.id] }, {}, multiple: :true, size: 5, include_blank: true, class: "form-control"%>
   <p>
     <%= f.text_area :description %>
   </p>

@@ -45,6 +45,18 @@
 		  </form>
 		</div>
 	<br><br>
+	<main>
+		<nav class="w3-sidenav w3-white w3-card-2" style="width:18%; height: 400px;"><br>
+		  <%@cate_sidebar.each do |cate|%>
+	      <p><%= link_to "#{cate.content} (#{cate.products.length})", category_path(id: cate.id)%></p>
+	    <%end%>
+		</nav>
+	</main>
+	
+	<br><br>
+	<footer style="width: 100%;position:fixed!important; bottom: 10px; z-index: -1" class="w3-container w3-teal">
+	  <p>Author by Thachnp</p>
+	</footer>
 	<% else %>
 		<div>
 		  <ul>
@@ -55,20 +67,10 @@
 		<br>
 	<% end %>
 </header>
-<main>
-	<nav class="w3-sidenav w3-white w3-card-2" style="width:18%; height: 400px;"><br>
-	  <%@cate_sidebar.each do |cate|%>
-      <p><%= link_to "#{cate.content}", category_path(id: cate.id)%></p>
-    <%end%>
-	</nav>
-	<div style="margin-left: 20%">
-		<%= yield %>
-	</div>
-</main>
+<div style="margin-left: 20%">
+	<%= yield %>
+</div>
 
-<br><br>
-<footer style="width: 100%;position:fixed!important; bottom: 10px; z-index: -1" class="w3-container w3-teal">
-  <p>Author by Thachnp</p>
-</footer>
+
 </body>
 </html>
