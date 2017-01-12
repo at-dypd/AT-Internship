@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to action: :show, notice: 'Update Profile was successfully updated.'
+      redirect_to current_user, notice: 'Update Profile was successfully updated.'
     else
       render :edit
     end

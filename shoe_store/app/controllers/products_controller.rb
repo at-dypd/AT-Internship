@@ -28,13 +28,13 @@ class ProductsController < ApplicationController
         	CategoriesProducts.create(category_id: cate, product_id: @product.id)
         end
       end
-      redirect_to action: :index
+      redirect_to root_path
     end
 	end
 
 	def destroy
 		Product.destroy(params[:id])
-		redirect_to action: :index
+		redirect_to root_path
 	end
 
   private

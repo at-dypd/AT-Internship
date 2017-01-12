@@ -3,7 +3,8 @@ class CookiesController < ApplicationController
 		
 	end
 	def create
-		cookies[:cart] = { "@product.id"=> "@product.price" }
+		cookies[:cart] = { "#{params[:product_id]}" => "1" }
 		redirect_to root_path
+				binding.pry
 	end
 end
