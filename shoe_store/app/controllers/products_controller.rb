@@ -1,37 +1,31 @@
 class ProductsController < ApplicationController
 	def index
+		@search = Product.ransack(params[:q])
 		if params[:navigation].nil?
-	    @search = Product.all.ransack(params[:q])
 	    @products = @search.result.page(params[:page]).per(params[:limit])
 	  elsif params[:navigation]=="new"
-	  	@search = Product.all.order(created_at: :desc).ransack params[:q] 
-	  	@products = @search.result.page(params[:page]).per params[:limit]
+	  	@products = @search.result.page(params[:page]).per(params[:limit]).order(created_at: :desc)
 	  else 
-	  	@search = Product.all.order(views_count: :desc).ransack params[:q] 
-	    @products = @search.result.page(params[:page]).per params[:limit]
+	    @products = @search.result.page(params[:page]).per(params[:limit]).order(views_count: :desc)
 	  end
 	end
 
 	def new
-		@cats = Category.all
 		@product = Product.new
 	end
 
 	def show
-		@product = Product.find(params[:id])
+		@product = Product.includes(:categories, comments: :replies).find(params[:id])
 		@product.views_count+=1
 		@product.save
 	end
 
 	def create
 		@product = Product.new(product_params)
-		@product.views_count = 0
-		@product.likes_count = 0
 	  if @product.save
       if params[:product][:categories].present?
         params[:product][:categories].each do |cate|
-          @save_cate=CategoriesProducts.new(category_id: cate, product_id: @product.id)
-          @save_cate.save
+        	CategoriesProducts.create(category_id: cate, product_id: @product.id)
         end
       end
       redirect_to action: :index

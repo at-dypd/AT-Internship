@@ -1,5 +1,4 @@
 <h2>product info</h2>
-<%=binding.pry%>
 <button class="button button3"><%= link_to "Like", {controller: "likes", action: "create", id: @product.id, user_id: current_user.id}, method: :post %></button>  <%=Like.where(product_id: @product.id).size%> person liked this product<br><br>
 <%= link_to "Cho vao gio",{controller: "cookies", action: "create", product_id: @product.id, product_price: @product.price}, method: :post %>
 <div id="product-info">

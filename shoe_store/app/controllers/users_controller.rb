@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   class_attribute :product_ordered_option
   def edit
-    @user = current_user
   end
 
   def index
@@ -14,8 +13,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if @user.update(user_params)
+    if current_user.update(user_params)
       redirect_to action: :show, notice: 'Update Profile was successfully updated.'
     else
       render :edit
