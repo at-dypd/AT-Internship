@@ -4,7 +4,7 @@
       super
     end
     def create
-      @referer_url = root_path
+      @referer_url = products_path
       super
     end
     def destroy
