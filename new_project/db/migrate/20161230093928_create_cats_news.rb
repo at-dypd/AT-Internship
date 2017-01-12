@@ -6,5 +6,7 @@ class CreateCatsNews < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+    	add_foreign_key :cats_news, :news, column: :new_id, primary_key: :id
+  	add_foreign_key :cats_news, :categories, column: :cat_id, primary_key: :id
   end
 end
