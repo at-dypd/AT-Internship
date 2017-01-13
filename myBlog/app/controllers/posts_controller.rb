@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:update, :show, :edit, :destroy]
 
   def index
-    @posts = Post.all
+    # params[:user_id].present?
+      @user = User.includes(:posts).all
   end
 
   def new
@@ -9,11 +11,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    # render plain: params[:article].inspect
-    @post = Post.new(post_params)
-     @post.user_id = current_user.id if current_user
+    @post = current_user.posts.create(post_params)
+    @post.user_id = current_user.id if current_user
     if @post.save
+      flash[:notice] = "Post successfully created"
       redirect_to posts_path
     else
       render 'new'
@@ -21,15 +22,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.includes(:comments).find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to posts_path
     else
@@ -38,14 +38,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
-
     redirect_to posts_path
   end
 
   private
   def post_params
     params.require(:post).permit(:title, :containt)
+  end
+  def set_post
+    @post = Post.find(params[:id])
   end
 end
