@@ -1,0 +1,6 @@
+<form action="/users/<%= current_user.id%>/posts/<%= @post.id %>/comments" method="post">
+  <label>comment</label>
+  <textarea name="content"></textarea>
+  <input type="submit" name="submit" value="Comment">
+</form>
+

@@ -1,0 +1,17 @@
+<h1>Listing My Post </h1>
+<table>
+  <tr>
+    <th><strong>Title</strong></th>
+    <th colspan="3"></th>
+  </tr>
+  <% current_user.posts.each do |post| %>
+    <tr>
+      <td><strong><%= post.title.capitalize %></strong></td>
+      <td><%= link_to 'Show', user_post_path(current_user, post), action: "show" %></td>
+      <td><%= link_to 'Edit', edit_user_post_path(current_user, post) %></td>
+      <td><%= link_to 'Destroy', user_post_path(current_user, post),
+                                                    method: :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'New post', new_user_post_path(current_user) %>
