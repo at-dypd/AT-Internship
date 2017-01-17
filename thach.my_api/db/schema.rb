@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170109035159) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password"
-    t.integer  "comfirm_token"
+    t.string   "comfirm_token"
     t.datetime "confirm_at"
     t.datetime "comfirm_send_at"
   end

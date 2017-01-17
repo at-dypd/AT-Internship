@@ -3,13 +3,10 @@ class UsersController<ApplicationController
  
 	def index
     @users=User.all
-    binding.pry
     render json: @users
 	end
 
-
 	def new
-		
 	end
 
 	def create
@@ -25,7 +22,6 @@ class UsersController<ApplicationController
 	end
 
   def edit
-  
   end  
 
 	def destroy
