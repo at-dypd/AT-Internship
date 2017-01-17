@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
 	def index
+		if params[:limit].nil?
+			params[:limit]=10
+		end
 		@search = Product.ransack(params[:q])
 		if params[:navigation].nil?
 	    @products = @search.result.page(params[:page]).per(params[:limit])

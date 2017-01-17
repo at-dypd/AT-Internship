@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	</title>
+</head>
+<body>
+<%sum=0%>
+<%eval(cookies[:cart]).each_key do |product_id|%>
+<p><%thach=Product.find(product_id)%>
+<strong><%=thach.product_name %>:</strong>
+<%=thach.price %>
+<button class="button button3"><%= link_to "clear", cooky_path(product_id), method: :delete%></button>
+<%sum+=thach.price %></p>
+<%end%>
+<br><br>
+<strong>Total:</strong> <%=sum%>
+</body>
+</html>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # delete '/cart',   to: 'cookies#destroy'
 
   resources :cookies
+  resources :search
 
   resources :products, concerns: :paginatable do
     resources :comments

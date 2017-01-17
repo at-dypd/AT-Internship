@@ -9,7 +9,7 @@
   <title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
 </head>
 <body>
-<header>
+<header style="height: 80px">
 	<% if notice %>
 	  <p class="alert alert-success"><%= notice %></p>
 	<% end %>
@@ -33,17 +33,13 @@
 		  	<li><%= link_to "New", products_path(navigation: "new")%></li>
 		  	<li><%= link_to "Hot", products_path(navigation: "hot")%></li>
 		  	<li><%= link_to "Create post", new_product_path %></li>
+		  	<li><%= link_to "Cart", cookies_path %></li>
 		    <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-		    <li><%= link_to "Home", products_path %></li>
+		    <li><%= link_to "Home", products_path %></li>  
 		  </ul>
 		</div>
 		<br>
 	<!-- search_box -->
-		<div class="search_form">
-		  <form action="" method="post">
-		    <input type="text" name="search_box" id="search_box" placeholder="find something here" />
-		  </form>
-		</div>
 	<br><br>
 	<main>
 		<nav class="w3-sidenav w3-white w3-card-2" style="width:18%; height: 400px;"><br>
@@ -52,11 +48,7 @@
 	    <%end%>
 		</nav>
 	</main>
-	
 	<br><br>
-	<footer style="width: 100%;position:fixed!important; bottom: 10px; z-index: -1" class="w3-container w3-teal">
-	  <p>Author by Thachnp</p>
-	</footer>
 	<% else %>
 		<div>
 		  <ul>
