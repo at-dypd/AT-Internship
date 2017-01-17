@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
 
   post   '/products/:id',   to: 'likes#create'
+  # get    '/cart',   to: 'cookies#index'
+  # post   '/cart',   to: 'cookies#create'
+  # delete '/cart',   to: 'cookies#destroy'
+
+  resources :cookies
+  resources :search
 
   resources :products, concerns: :paginatable do
     resources :comments

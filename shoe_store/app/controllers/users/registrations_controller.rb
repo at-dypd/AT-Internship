@@ -1,6 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   def update
-    binding.pry 
     @user = current_user
     if @user.update(user_params)
       redirect_to root_path, notice: 'Update Profile was successfully updated.'

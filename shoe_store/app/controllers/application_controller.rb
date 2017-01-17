@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def sidebar
-  	@cate_sidebar = Category.all
+  	@cate_sidebar = Category.all.includes(:products)
   end
 end
