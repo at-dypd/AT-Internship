@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+
   def index
-
   end
+
   def show
-
   end
+
   def edit
     @user = current_user
   end
@@ -17,6 +18,7 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+
   private
   def user_params
     params.require(:user).permit(:user_name, :age)

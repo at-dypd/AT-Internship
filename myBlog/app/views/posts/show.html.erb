@@ -1,11 +1,15 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title.capitalize %>
-</p>
-<p>
-  <strong>CONTENT:</strong>
-  <%= @post.containt %>
-</p>
+<main >
+<div class="panel panel-primary" >
+  <div class="panel-heading" >
+    <strong>Title:</strong>
+    <%= @post.title.capitalize %>
+  </div>
+  <div class="panel-body">
+    <strong>CONTENT:</strong>
+    <%= @post.containt %>
+  </div >
+</div>
+</main>
 <p>
   <% @post.comments.where(comment_id: nil).each do |comment| %>
     <strong>Comment:</strong>
