@@ -1,0 +1,7 @@
+    <form action="/users/<%= current_user.id%>/posts/<%= @post.id %>/comments" method="post">
+      <label>Reply</label><br>
+      <textarea name="content">
+      </textarea>
+      <input type="hidden" name="comment_id" value="<%= @comment.id %>">
+      <input type="submit" name="submit" value="Reply" class="btn btn-success">
+    </form>
