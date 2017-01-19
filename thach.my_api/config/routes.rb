@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users
+  resources :posts
   post   '/register',   to: 'register#create'
   get    '/login',   to: 'login#new'
   post   '/login',   to: 'login#create'
