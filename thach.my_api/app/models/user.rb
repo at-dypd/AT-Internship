@@ -8,6 +8,6 @@ class User<ActiveRecord::Base
   end
 
   def set_comfirm_token
-  	self.comfirm_token = BCrypt::Password.create(comfirm_token)  
+  	self.comfirm_token = comfirm_token
   end
 end
